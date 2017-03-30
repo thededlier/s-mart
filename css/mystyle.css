@@ -1,0 +1,45 @@
+.brand-header {
+    font-family: 'Crete Round', serif;
+    font-size: 50px;
+    
+}
+
+.para {
+    font-family: 'Revalia', cursive;
+    
+}
+
+.jumbotron {
+    background:#7B68EE;
+}
+
+.colonel {
+    font-family: 'Arvo', serif;
+    font-size: 50px;
+}
+
+.major {
+    font-family: 'Pavanam', sans-serif;
+    font-size: 25px;
+}
+
+.btn-google-plus {
+    background:#DC143C;
+}
+
+.btn-facebook {
+    background: #9932CC;
+}
+
+.btn-linkedin {
+    background:#000000; 
+}
+
+.btn-twitter {
+    background: #F5F5F5	;
+}
+
+.btn-youtube {
+    background: #00FF7F;
+}
+

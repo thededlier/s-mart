@@ -1,14 +1,10 @@
 <?php
 
 function itemSearch($searchIndex, $keywords) {
+    include './process/common/credentials/secret.php';
     // Suppress warnings
     error_reporting(0);
-    // AWS Access Key
-    $aws_access_key_id = "AKIAJDFOBDG56PTMTDDQ";
-
-    // AWS Secret Key
-    $aws_secret_key = "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";
-
+    
     // Region
     $endpoint = "webservices.amazon.in";
 

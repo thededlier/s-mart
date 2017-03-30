@@ -1,15 +1,12 @@
 <?php
 
 function itemLookup($pid) {
-    include './process/connect.php';
+    include './connect.php';
+    include './credentials/secret.php';
+    
     // Suppress warnings
     error_reporting(0);
-    // Your AWS Access Key ID, as taken from the AWS Your Account page
-    $aws_access_key_id = "AKIAJDFOBDG56PTMTDDQ";
-
-    // Your AWS Secret Key corresponding to the above ID, as taken from the AWS Your Account page
-    $aws_secret_key = "ddbV0h5XmuoePQNDsXYbvc9/uRgsgAI0O6fwZcac";
-
+    
     // The region you are interested in
     $endpoint = "webservices.amazon.in";
 

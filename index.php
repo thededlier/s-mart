@@ -58,7 +58,22 @@
             <div class="row row-header">
                 <div class="col xs-12 col-sm-12">
                     <h1 align="center" class="brand-header"> S-MART BAZAAR</h1>
-                    <p style="padding:40px;"></p>
+                    <p style="padding:20px;"></p>
+                    <div class="row">    
+                        <form action="search-results.php" method="POST">
+                            <div class="form-group col-md-7">
+                                <input type="text" class="form-control" id="search_item" name="search_item" placeholder="Search...."></input>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <select class="form-control" name="category">
+                                    <option value="Electronics">Electronics</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-default btn-block" type="submit" name="simple_search">Search</button>
+                        </form>
+                    </div>
+                    <p style="padding:20px;"></p>
                     <p align="center"class="para">Web platform for monitoring price fluctuations of Products of Amazon and also featuring Product Comparison for users to provide them best possible shopping experience.</p>
                 </div>
                 <div>

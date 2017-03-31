@@ -1,8 +1,8 @@
 <?php
 
 function itemLookup($pid) {
-    include './connect.php';
-    include './credentials/secret.php';
+    include './process/connect.php';
+    include './procss/common/credentials/secret.php';
     
     // Suppress warnings
     error_reporting(0);

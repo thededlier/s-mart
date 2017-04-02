@@ -42,7 +42,7 @@
                 </div>
             </div>
         </nav>
-        <header class="jumbotron">
+        <header class="jumbotron" style="margin-top: -50px;">
 
             <div class="container">
                 <div class="row row-header">

@@ -66,19 +66,20 @@ function itemSearch($searchIndex, $keywords) {
     foreach($parsed_xml->Items->Item as $current) {
         $html =     '<div class="col-md-4">' .
                         '<div class="card">' .
-                            '<form action="compare-load.php" method="POST">' .
-                                '<div class="img-container">' .
-                                    '<img src="' . $current->LargeImage->URL . '" width="304" height="236">' .
-                                '</div>' .
-                                '<div class="card-content">' .
+                            '<div class="img-container">' .
+                                '<img src="' . $current->LargeImage->URL . '" width="304" height="236">' .
+                            '</div>' .
+                            '<div class="card-content">' .
+                                '<h4 class="product-title-short"><a href="' . $current->DetailPageURL . '">' . $current->ItemAttributes->Title . '</a></h4>' .
+                                '<h5>' . 'Lowest Price : <b>' . $current->OfferSummary->LowestNewPrice->FormattedPrice . '</b></h5>' .
+                            '</div>' .
+                            '<div class="card-controls">' .
+                                '<form action="compare-load.php" method="POST">' .
                                     '<input type="hidden" name="product_id" value="' . $current->ASIN . '">' .
-                                    '<h4 class="product-title-short"><a href="' . $current->DetailPageURL . '">' . $current->ItemAttributes->Title . '</a></h4>' .
-                                    '<h5>' . 'Lowest Price : <b>' . $current->OfferSummary->LowestNewPrice->FormattedPrice . '</b></h5>' .
-                                '</div>' .
-                                '<div class="card-controls">' .
                                     '<button class="btn btn-primary compare-button" type="submit" name="compare-button">Compare</button>' .
-                                '</div>' .
-                            '</form>' .
+                                    '<a class="btn btn-default" href=showProdDetails.php?pid='.$current->ASIN.' name="lookup-button">See Details</a>'.
+                                '</form>' .
+                            '</div>' .
                         '</div>' .
                     '</div>';
         echo $html;

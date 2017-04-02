@@ -4,7 +4,7 @@ function itemSearch($searchIndex, $keywords) {
     include './process/common/credentials/secret.php';
     // Suppress warnings
     error_reporting(0);
-    
+
     // Region
     $endpoint = "webservices.amazon.in";
 
@@ -64,19 +64,19 @@ function itemSearch($searchIndex, $keywords) {
     $html = "";
 
     foreach($parsed_xml->Items->Item as $current) {
-        $html =     '<div class="row">' .
-                        '<div class="item col-md-12">' .
-                            '<form action="compare-load.php" method="POST"' .
-                                '<div class="row">' .
-                                    '<div class="col-md-4">' .
-                                        '<img src="' . $current->LargeImage->URL . '" class="img-responsive">' .
-                                    '</div>' .
-                                    '<div class="col-md-8">' .
-                                        '<input type="hidden" name="product_id" value="' . $current->ASIN . '">' .
-                                        '<h4><a href="' . $current->DetailPageURL . '">' . $current->ItemAttributes->Title . '</a></h4>' .
-                                        '<h5>' . 'Lowest Price : <b>' . $current->OfferSummary->LowestNewPrice->FormattedPrice . '</b></h5>' .
-                                        '<button class="btn btn-default" type="submit" name="compare-button">Compare</button>' .
-                                    '</div>' .
+        $html =     '<div class="col-md-4">' .
+                        '<div class="card">' .
+                            '<form action="compare-load.php" method="POST">' .
+                                '<div class="img-container">' .
+                                    '<img src="' . $current->LargeImage->URL . '" width="304" height="236">' .
+                                '</div>' .
+                                '<div class="card-content">' .
+                                    '<input type="hidden" name="product_id" value="' . $current->ASIN . '">' .
+                                    '<h4 class="product-title-short"><a href="' . $current->DetailPageURL . '">' . $current->ItemAttributes->Title . '</a></h4>' .
+                                    '<h5>' . 'Lowest Price : <b>' . $current->OfferSummary->LowestNewPrice->FormattedPrice . '</b></h5>' .
+                                '</div>' .
+                                '<div class="card-controls">' .
+                                    '<button class="btn btn-primary compare-button" type="submit" name="compare-button">Compare</button>' .
                                 '</div>' .
                             '</form>' .
                         '</div>' .

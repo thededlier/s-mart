@@ -1,12 +1,12 @@
 <?php
 
 function itemLookup($pid) {
-    include './process/connect.php';
-    include './procss/common/credentials/secret.php';
-    
+    include './process/common/connect.php';
+    include './process/common/credentials/secret.php';
+
     // Suppress warnings
     error_reporting(0);
-    
+
     // The region you are interested in
     $endpoint = "webservices.amazon.in";
 
@@ -64,7 +64,7 @@ function itemLookup($pid) {
 
     $html = "";
     $attr = "";
-    
+
     $current = $parsed_xml->Items->Item;
 
     foreach($current->ItemAttributes->Feature as $itemFeature) {
@@ -87,7 +87,7 @@ function itemLookup($pid) {
                     if($found === 1) break;
                 }
             }
-        } 
+        }
         // Determining processor rating
         else if(strpos($itemFeature, "processor")) {
             $found = 0;
@@ -124,26 +124,26 @@ function itemLookup($pid) {
                 }
             }
         }
-        $attr .= '<li class="list-group-item">' . $itemFeature . '<span class="rate pull-right"> Rate : ' . $rating . '</span>' . '</li>';    
+        $attr .= '<li class="list-group-item">' . $itemFeature . '<span class="rate pull-right"> Rate : ' . $rating . '</span>' . '</li>';
     }
 
     $html =     '<div class="row">' .
                     '<div class="item col-md-12">' .
                         '<div class="col-md-12">' .
-                            '<img src="' . $current->LargeImage->URL . '" class="img-responsive">' . 
+                            '<img src="' . $current->LargeImage->URL . '" class="img-responsive">' .
                         '</div>' .
                         '<div class="col-md-12">' .
                             '<input type="hidden" name="product_id" value="' . $current->ASIN . '">' .
                             '<h4><a href="' . $current->DetailPageURL . '">' . $current->ItemAttributes->Title . '</a></h4>' .
                             '<h5>' . 'Lowest Price : <b>' . $current->OfferSummary->LowestNewPrice->FormattedPrice . '</b></h5>' .
-                            '<ul class="list-group">' . 
+                            '<ul class="list-group">' .
                                 $attr .
                             '</ul>' .
                             // '<button class="btn btn-default" type="submit" name="compare_button">Compare</button>' .
                         '</div>' .
                     '</div>' .
                 '</div>';
-    
+
     return $html;
 }
 ?>

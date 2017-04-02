@@ -74,7 +74,7 @@ function itemSearch($searchIndex, $keywords) {
                                 '<h5>' . 'Lowest Price : <b>' . $current->OfferSummary->LowestNewPrice->FormattedPrice . '</b></h5>' .
                             '</div>' .
                             '<div class="card-controls">' .
-                                '<form action="compare-load.php" method="POST">' .
+                                '<form action="./process/compare/compare-load.php" method="POST">' .
                                     '<input type="hidden" name="product_id" value="' . $current->ASIN . '">' .
                                     '<button class="btn btn-primary compare-button" type="submit" name="compare-button">Compare</button>' .
                                     '<a class="btn btn-default" href=showProdDetails.php?pid='.$current->ASIN.' name="lookup-button">See Details</a>'.

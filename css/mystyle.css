@@ -40,15 +40,17 @@ body {
     text-overflow: ellipsis;
 }
 
-.img-containter {
-    width: 304px;
-    height: 236px;
+.img-containter-big > img {
+    display: block;
+    margin: 0 auto;
+    height: 304px;
 }
 
 .img-containter > img{
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
+    width: 304px;
+    height: 236px;
 }
 
 .jumbotron {
@@ -88,4 +90,8 @@ body {
 
 .btn-youtube {
     background: #00FF7F;
+}
+
+.blue-text {
+    color: #2196f3;
 }

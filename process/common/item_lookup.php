@@ -48,8 +48,6 @@ function itemLookup($pid) {
     // Generate the signed URL
     $request_url = 'http://'.$endpoint.$uri.'?'.$canonical_query_string.'&Signature='.rawurlencode($signature);
 
-    echo "Signed URL: \"".$request_url."\"";
-
     $response = file_get_contents($request_url);
     $parsed_xml = simplexml_load_string($response);
 
@@ -66,6 +64,8 @@ function itemLookup($pid) {
     $attr = "";
 
     $current = $parsed_xml->Items->Item;
+
+    $total_score = 0;
 
     foreach($current->ItemAttributes->Feature as $itemFeature) {
         // Determining RAM rating
@@ -124,25 +124,26 @@ function itemLookup($pid) {
                 }
             }
         }
-        $attr .= '<li class="list-group-item">' . $itemFeature . '<span class="rate pull-right"> Rate : ' . $rating . '</span>' . '</li>';
+        $total_score += $rating;
+        $attr .= '<li class="list-group-item">' . $itemFeature . '<span class="rate pull-right"> Rate : <span class="blue-text">' . $rating . '</span></span>' . '</li>';
     }
 
-    $html =     '<div class="row">' .
-                    '<div class="item col-md-12">' .
-                        '<div class="col-md-12">' .
-                            '<img src="' . $current->LargeImage->URL . '" class="img-responsive">' .
-                        '</div>' .
-                        '<div class="col-md-12">' .
-                            '<input type="hidden" name="product_id" value="' . $current->ASIN . '">' .
-                            '<h4><a href="' . $current->DetailPageURL . '">' . $current->ItemAttributes->Title . '</a></h4>' .
-                            '<h5>' . 'Lowest Price : <b>' . $current->OfferSummary->LowestNewPrice->FormattedPrice . '</b></h5>' .
-                            '<ul class="list-group">' .
-                                $attr .
-                            '</ul>' .
-                            // '<button class="btn btn-default" type="submit" name="compare_button">Compare</button>' .
-                        '</div>' .
+    $html =     '<div class="card col-md-11">' .
+                    '<div class="img-containter-big">' .
+                        '<img src="' . $current->LargeImage->URL . '" class="img-responsive">' .
                     '</div>' .
-                '</div>';
+                    '<div class="col-md-12">' .
+                        '<input type="hidden" name="product_id" value="' . $current->ASIN . '">' .
+                        '<h4><a href="' . $current->DetailPageURL . '">' . $current->ItemAttributes->Title . '</a></h4>' .
+                        '<h5>' . 'Lowest Price : <b>' . $current->OfferSummary->LowestNewPrice->FormattedPrice . '</b></h5>' .
+                        '<ul class="list-group">' .
+                            $attr .
+                        '</ul>' .
+                        '<h5>Features Score : ' . $total_score . '</h5>' .
+                        // '<button class="btn btn-default" type="submit" name="compare_button">Compare</button>' .
+                    '</div>' .
+                '</div>' ;
+
 
     return $html;
 }
